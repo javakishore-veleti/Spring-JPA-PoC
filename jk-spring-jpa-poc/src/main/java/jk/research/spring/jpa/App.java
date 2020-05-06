@@ -56,7 +56,7 @@ public class App {
 		long returnValue = 0;
 		for (int aRowIndex = 1; aRowIndex <= NO_OF_ROWS_TO_DELETE; aRowIndex++) {
 
-			returnValue = serviceRef.deleteByIdTargetApplication(TargetApplication.getRandom());
+			returnValue = serviceRef.deleteByIdTargetApplication(TargetApplication.getRandom().toString());
 			System.out.println("returnValue " + returnValue);
 		}
 

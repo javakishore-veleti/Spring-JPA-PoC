@@ -27,7 +27,7 @@ public class CacheRefRegServiceImpl implements CacheRefRegService {
 	}
 
 	@Override
-	public Integer deleteByIdTargetApplication(TargetApplication targetApplication) {
+	public Integer deleteByIdTargetApplication(String targetApplication) {
 
 		return dao.deleteByIdTargetApplication(targetApplication);
 		// return dao.deleteByIdTargetApplication(targetApplication);

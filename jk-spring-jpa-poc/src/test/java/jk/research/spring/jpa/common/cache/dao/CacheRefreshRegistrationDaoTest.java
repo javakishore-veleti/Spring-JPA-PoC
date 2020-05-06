@@ -41,18 +41,18 @@ public class CacheRefreshRegistrationDaoTest {
 
 	@Test
 	public void deleteTest() {
-		
+
 		System.out.println("Delete ENTER");
 
 		for (int aRowIndex = 1; aRowIndex <= 3; aRowIndex++) {
-			
+
 			System.out.println("Delete FOR LOOP 1 " + aRowIndex);
 
-			cacheRefreshRegistrationDao.deleteByIdTargetApplication(TargetApplication.getRandom());
-			
+			cacheRefreshRegistrationDao.deleteByIdTargetApplication(TargetApplication.getRandom().toString());
+
 			System.out.println("Delete FOR LOOP 2 " + aRowIndex);
 		}
-		
+
 		System.out.println("Delete EXIT");
 
 	}

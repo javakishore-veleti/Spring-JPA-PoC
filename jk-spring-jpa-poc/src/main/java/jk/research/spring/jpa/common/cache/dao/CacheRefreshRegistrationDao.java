@@ -22,6 +22,6 @@ public interface CacheRefreshRegistrationDao
 	@Transactional
 	@Modifying // to mark delete or update query
 	@Query(value = "DELETE FROM CacheRefreshRegistration  WHERE targetApplication = :targetApplication", nativeQuery = true)
-	Integer deleteByIdTargetApplication(@Param("targetApplication") TargetApplication targetApplication);
+	Integer deleteByIdTargetApplication(@Param("targetApplication") String targetApplication);
 
 }
