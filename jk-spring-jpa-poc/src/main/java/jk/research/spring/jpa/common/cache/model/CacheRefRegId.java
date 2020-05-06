@@ -6,8 +6,8 @@ import javax.persistence.Embeddable;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 
-import jk.research.spring.jpa.common.cache.ApplicationCache;
-import jk.research.spring.jpa.common.cache.ApplicationInfo;
+import jk.research.spring.jpa.common.cache.ApplicationCacheEnum;
+import jk.research.spring.jpa.common.cache.ApplicationInfoEnum;
 
 @Embeddable
 public class CacheRefRegId implements Serializable {
@@ -15,34 +15,34 @@ public class CacheRefRegId implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Enumerated(EnumType.STRING)
-	private ApplicationInfo appInfo;
+	private ApplicationInfoEnum appInfo;
 
 	@Enumerated(EnumType.STRING)
-	private ApplicationCache appCache;
+	private ApplicationCacheEnum appCache;
 
 	public CacheRefRegId() {
 		super();
 	}
 
-	public CacheRefRegId(ApplicationInfo appInfo, ApplicationCache appCache) {
+	public CacheRefRegId(ApplicationInfoEnum appInfo, ApplicationCacheEnum appCache) {
 		super();
 		this.appInfo = appInfo;
 		this.appCache = appCache;
 	}
 
-	public ApplicationInfo getAppInfo() {
+	public ApplicationInfoEnum getAppInfo() {
 		return appInfo;
 	}
 
-	public void setAppInfo(ApplicationInfo appInfo) {
+	public void setAppInfo(ApplicationInfoEnum appInfo) {
 		this.appInfo = appInfo;
 	}
 
-	public ApplicationCache getAppCache() {
+	public ApplicationCacheEnum getAppCache() {
 		return appCache;
 	}
 
-	public void setAppCache(ApplicationCache appCache) {
+	public void setAppCache(ApplicationCacheEnum appCache) {
 		this.appCache = appCache;
 	}
 
