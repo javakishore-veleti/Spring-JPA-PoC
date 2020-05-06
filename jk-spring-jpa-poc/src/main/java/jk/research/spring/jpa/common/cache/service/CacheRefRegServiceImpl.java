@@ -2,12 +2,11 @@ package jk.research.spring.jpa.common.cache.service;
 
 import java.util.Optional;
 
-import javax.transaction.Transactional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import jk.research.spring.jpa.common.cache.TargetApplication;
 import jk.research.spring.jpa.common.cache.dao.CacheRefreshRegistrationDao;
@@ -28,9 +27,10 @@ public class CacheRefRegServiceImpl implements CacheRefRegService {
 	}
 
 	@Override
-	public long deleteByIdTargetApplication(TargetApplication targetApplication) {
+	public Integer deleteByIdTargetApplication(TargetApplication targetApplication) {
 
 		return dao.deleteByIdTargetApplication(targetApplication);
+		// return dao.deleteByIdTargetApplication(targetApplication);
 	}
 
 	@Override

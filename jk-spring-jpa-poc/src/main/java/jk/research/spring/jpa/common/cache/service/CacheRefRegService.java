@@ -10,7 +10,7 @@ public interface CacheRefRegService {
 
 	Optional<CacheRefreshRegistration> findAllCacheRegistryById(CacheRefreshRegistrationId refRegId);
 
-	long deleteByIdTargetApplication(TargetApplication targetApplication);
+	Integer deleteByIdTargetApplication(TargetApplication targetApplication);
 
 	void save(CacheRefreshRegistration cacheReg);
 

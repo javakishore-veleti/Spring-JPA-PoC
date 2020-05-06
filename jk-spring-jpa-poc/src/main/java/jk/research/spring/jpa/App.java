@@ -53,9 +53,11 @@ public class App {
 
 	private static void deleteCacheRegistryTable(CacheRefRegService serviceRef) throws Exception {
 
+		long returnValue = 0;
 		for (int aRowIndex = 1; aRowIndex <= NO_OF_ROWS_TO_DELETE; aRowIndex++) {
 
-			serviceRef.deleteByIdTargetApplication(TargetApplication.getRandom());
+			returnValue = serviceRef.deleteByIdTargetApplication(TargetApplication.getRandom());
+			System.out.println("returnValue " + returnValue);
 		}
 
 	}
