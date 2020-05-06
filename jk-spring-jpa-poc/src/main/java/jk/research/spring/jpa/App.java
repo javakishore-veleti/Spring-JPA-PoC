@@ -2,38 +2,47 @@ package jk.research.spring.jpa;
 
 import java.util.Date;
 
-import javax.transaction.Transactional;
-
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import jk.research.spring.jpa.common.cache.ApplicationCacheEnum;
 import jk.research.spring.jpa.common.cache.ApplicationInfoEnum;
-import jk.research.spring.jpa.common.cache.dao.CacheRefRegDAO;
 import jk.research.spring.jpa.common.cache.model.CacheRefRegId;
 import jk.research.spring.jpa.common.cache.model.CacheRegistry;
 import jk.research.spring.jpa.common.cache.service.CacheRefRegService;
 
-/**
- * Hello world!
- *
- */
 public class App {
+
+	public static final Integer NO_OF_ROWS_TO_INSERT = 10;
+
+	public static final Integer NO_OF_ROWS_TO_DELETE = NO_OF_ROWS_TO_INSERT - 1;
+
 	public static void main(String[] args) throws Exception {
 
-		ClassPathXmlApplicationContext ctx = new ClassPathXmlApplicationContext("application-context.xml");
+		ClassPathXmlApplicationContext ctx = null;
 
-		CacheRefRegService serviceRef = ctx.getBean(CacheRefRegService.class);
+		try {
+			ctx = new ClassPathXmlApplicationContext("application-context.xml");
 
-		populateCacheRegistryTable(serviceRef);
-		deleteCacheRegistryTable(serviceRef);
+			CacheRefRegService serviceRef = ctx.getBean(CacheRefRegService.class);
 
-		System.exit(0);
+			populateCacheRegistryTable(serviceRef);
+			deleteCacheRegistryTable(serviceRef);
+
+		} finally {
+
+			if (ctx != null) {
+				ctx.close();
+			}
+
+			System.exit(0);
+		}
+
 	}
 
 	private static void populateCacheRegistryTable(CacheRefRegService serviceRef) throws Exception {
 
 		CacheRegistry cacheReg = null;
-		for (int aRowIndex = 1; aRowIndex <= 10; aRowIndex++) {
+		for (int aRowIndex = 1; aRowIndex <= NO_OF_ROWS_TO_INSERT; aRowIndex++) {
 
 			cacheReg = new CacheRegistry(
 					new CacheRefRegId(ApplicationInfoEnum.getRandom(), ApplicationCacheEnum.getRandom()), new Date());
@@ -44,7 +53,7 @@ public class App {
 
 	private static void deleteCacheRegistryTable(CacheRefRegService serviceRef) throws Exception {
 
-		for (int aRowIndex = 1; aRowIndex <= 10; aRowIndex++) {
+		for (int aRowIndex = 1; aRowIndex <= NO_OF_ROWS_TO_DELETE; aRowIndex++) {
 
 			serviceRef.deleteByIdAppInfo(ApplicationInfoEnum.getRandom());
 		}

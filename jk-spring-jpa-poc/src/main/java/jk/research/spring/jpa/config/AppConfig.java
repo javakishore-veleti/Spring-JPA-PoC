@@ -8,8 +8,9 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 @Configuration
 @EnableTransactionManagement
-// @ComponentScans(value = { @ComponentScan("jk.research.spring.jpa.*") })
-
+/*
+ * Read application-context.xml for additional bean definitions
+ */
 public class AppConfig {
 
 	@Bean(name = "transactionManager")
@@ -28,6 +29,7 @@ public class AppConfig {
 
 		LocalEntityManagerFactoryBean factoryBean = new LocalEntityManagerFactoryBean();
 
+		// Look at persistence-xml file
 		factoryBean.setPersistenceUnitName("LOCAL_PERSISTENCE");
 
 		return factoryBean;
