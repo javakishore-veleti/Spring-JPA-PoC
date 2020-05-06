@@ -6,27 +6,27 @@ import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
 
 @Entity
-public class CacheRegistry {
+public class CacheRefreshRegistration {
 
 	@EmbeddedId
-	private CacheRefRegId id;
+	private CacheRefreshRegistrationId id;
 
 	private Date creationDate;
 
-	public CacheRegistry() {
+	public CacheRefreshRegistration() {
 	}
 
-	public CacheRegistry(CacheRefRegId id, Date creationDate) {
+	public CacheRefreshRegistration(CacheRefreshRegistrationId id, Date creationDate) {
 		super();
 		this.id = id;
 		this.creationDate = creationDate;
 	}
 
-	public CacheRefRegId getId() {
+	public CacheRefreshRegistrationId getId() {
 		return id;
 	}
 
-	public void setId(CacheRefRegId id) {
+	public void setId(CacheRefreshRegistrationId id) {
 		this.id = id;
 	}
 
@@ -60,7 +60,7 @@ public class CacheRegistry {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		CacheRegistry other = (CacheRegistry) obj;
+		CacheRefreshRegistration other = (CacheRefreshRegistration) obj;
 		if (creationDate == null) {
 			if (other.creationDate != null)
 				return false;

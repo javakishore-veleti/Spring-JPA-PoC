@@ -4,17 +4,17 @@ import java.util.Date;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import jk.research.spring.jpa.common.cache.ApplicationCacheEnum;
-import jk.research.spring.jpa.common.cache.ApplicationInfoEnum;
-import jk.research.spring.jpa.common.cache.model.CacheRefRegId;
-import jk.research.spring.jpa.common.cache.model.CacheRegistry;
+import jk.research.spring.jpa.common.cache.TargetCache;
+import jk.research.spring.jpa.common.cache.TargetApplication;
+import jk.research.spring.jpa.common.cache.model.CacheRefreshRegistrationId;
+import jk.research.spring.jpa.common.cache.model.CacheRefreshRegistration;
 import jk.research.spring.jpa.common.cache.service.CacheRefRegService;
 
 public class App {
 
 	public static final Integer NO_OF_ROWS_TO_INSERT = 10;
 
-	public static final Integer NO_OF_ROWS_TO_DELETE = NO_OF_ROWS_TO_INSERT - 1;
+	public static final Integer NO_OF_ROWS_TO_DELETE = 2;
 
 	public static void main(String[] args) throws Exception {
 
@@ -41,11 +41,11 @@ public class App {
 
 	private static void populateCacheRegistryTable(CacheRefRegService serviceRef) throws Exception {
 
-		CacheRegistry cacheReg = null;
+		CacheRefreshRegistration cacheReg = null;
 		for (int aRowIndex = 1; aRowIndex <= NO_OF_ROWS_TO_INSERT; aRowIndex++) {
 
-			cacheReg = new CacheRegistry(
-					new CacheRefRegId(ApplicationInfoEnum.getRandom(), ApplicationCacheEnum.getRandom()), new Date());
+			cacheReg = new CacheRefreshRegistration(
+					new CacheRefreshRegistrationId(TargetApplication.getRandom(), TargetCache.getRandom()), new Date());
 
 			serviceRef.save(cacheReg);
 		}
@@ -55,7 +55,7 @@ public class App {
 
 		for (int aRowIndex = 1; aRowIndex <= NO_OF_ROWS_TO_DELETE; aRowIndex++) {
 
-			serviceRef.deleteByIdAppInfo(ApplicationInfoEnum.getRandom());
+			serviceRef.deleteByIdTargetApplication(TargetApplication.getRandom());
 		}
 
 	}

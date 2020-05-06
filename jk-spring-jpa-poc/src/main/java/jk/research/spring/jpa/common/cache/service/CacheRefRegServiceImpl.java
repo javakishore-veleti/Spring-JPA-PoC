@@ -1,6 +1,6 @@
 package jk.research.spring.jpa.common.cache.service;
 
-import java.util.List;
+import java.util.Optional;
 
 import javax.transaction.Transactional;
 
@@ -9,10 +9,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Service;
 
-import jk.research.spring.jpa.common.cache.ApplicationInfoEnum;
-import jk.research.spring.jpa.common.cache.dao.CacheRefRegDAO;
-import jk.research.spring.jpa.common.cache.model.CacheRefRegId;
-import jk.research.spring.jpa.common.cache.model.CacheRegistry;
+import jk.research.spring.jpa.common.cache.TargetApplication;
+import jk.research.spring.jpa.common.cache.dao.CacheRefreshRegistrationDao;
+import jk.research.spring.jpa.common.cache.model.CacheRefreshRegistration;
+import jk.research.spring.jpa.common.cache.model.CacheRefreshRegistrationId;
 
 @Service
 @Scope(proxyMode = ScopedProxyMode.INTERFACES)
@@ -20,20 +20,27 @@ import jk.research.spring.jpa.common.cache.model.CacheRegistry;
 public class CacheRefRegServiceImpl implements CacheRefRegService {
 
 	@Autowired
-	CacheRefRegDAO dao;
+	CacheRefreshRegistrationDao dao;
 
 	@Override
-	public List<CacheRegistry> findAllCacheRegistryById(CacheRefRegId refRegId) {
-		return dao.findAllCacheRegistryById(refRegId);
+	public Optional<CacheRefreshRegistration> findAllCacheRegistryById(CacheRefreshRegistrationId refRegId) {
+		return dao.findById(refRegId);
 	}
 
 	@Override
-	public Long deleteByIdAppInfo(ApplicationInfoEnum applicationInfo) {
-		return dao.deleteByIdAppInfo(applicationInfo);
+	public long deleteByIdTargetApplication(TargetApplication targetApplication) {
+
+		return dao.deleteByIdTargetApplication(targetApplication);
 	}
 
 	@Override
-	public void save(CacheRegistry cacheReg) {
+	public long count() {
+
+		return dao.count();
+	}
+
+	@Override
+	public void save(CacheRefreshRegistration cacheReg) {
 		dao.save(cacheReg);
 	}
 

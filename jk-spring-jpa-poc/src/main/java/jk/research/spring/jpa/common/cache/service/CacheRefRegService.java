@@ -1,16 +1,19 @@
 package jk.research.spring.jpa.common.cache.service;
 
-import java.util.List;
+import java.util.Optional;
 
-import jk.research.spring.jpa.common.cache.ApplicationInfoEnum;
-import jk.research.spring.jpa.common.cache.model.CacheRefRegId;
-import jk.research.spring.jpa.common.cache.model.CacheRegistry;
+import jk.research.spring.jpa.common.cache.TargetApplication;
+import jk.research.spring.jpa.common.cache.model.CacheRefreshRegistration;
+import jk.research.spring.jpa.common.cache.model.CacheRefreshRegistrationId;
 
 public interface CacheRefRegService {
 
-	List<CacheRegistry> findAllCacheRegistryById(CacheRefRegId refRegId);
+	Optional<CacheRefreshRegistration> findAllCacheRegistryById(CacheRefreshRegistrationId refRegId);
 
-	Long deleteByIdAppInfo(ApplicationInfoEnum applicationInfo);
+	long deleteByIdTargetApplication(TargetApplication targetApplication);
 
-	void save(CacheRegistry cacheReg);
+	void save(CacheRefreshRegistration cacheReg);
+
+	long count();
+
 }
